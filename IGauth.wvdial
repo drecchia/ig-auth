@@ -1,0 +1,43 @@
+#!/bin/sh
+# eeeeyyyy lets get it...
+[ ! -r /var/log/messages ] && { \
+echo 'Usuario atual nao tem permissao para ler o /var/log/messages...'; \
+echo 'Abilite leitura ao arquivo e tente novamente "./IGauth.wvdial" .......';exit;}
+cp /etc/ppp/options ~/.ppprc.wvdial &> /dev/null
+[ -e ~/.ppprc ] && mv ~/.ppprc ~/.ppprc.bkup
+# lets works some.. eheh
+x=$(cat ~/.ppprc.wvdial|grep '^connect*')
+if [ $x ];then
+echo -e "\nI'll comment the following line from your personal pppd options file:\n$x\noK?"
+read ans
+if [ $ans = 'y' -o $ans = 's' ];then
+sed s/^connect/\#connect/g ~/.ppprc.wvdial > ~/.ppprc.new
+mv ~/.ppprc.new ~/.ppprc.wvdial
+echo "connect \"$HOME/.IGauth/waiter.sh \&\"" >> ~/.ppprc.wvdial
+fi
+else
+echo "connect \"$HOME/.IGauth/waiter.sh \&\"" >> ~/.ppprc.wvdial
+fi
+y=$(cat ~/.ppprc.wvdial|grep '^disconnect*')
+if [ $y ];then
+echo -e "\nI'll comment the following line from your personal pppd options file:\n$y\noK?"
+read anw
+if [ $anw = 'y' -o $anw = 's' ];then
+sed s/^disconnect/\#disconnect/g ~/.ppprc.wvdial > ~/.ppprc.new
+mv ~/.ppprc.new ~/.ppprc.wvdial
+echo "disconnect \"$HOME/.IGauth/IGauth.sh -out\"" >> ~/.ppprc.wvdial
+fi
+else
+echo "disconnect \"$HOME/.IGauth/IGauth.sh -out\"" >> ~/.ppprc.wvdial
+fi
+# hm... lets think some.... ~/.ppprc is used for all conections.. not only IG...
+# so... 
+echo -e 'Qual o comando que vc digita pra conectar na IG pelo wvdial?\nEx: wvdial IG / wvdial'
+read comw
+if [ ! "$(cat ~/.profile|grep '^alias IG.wvdial*')" ];then
+cat << EOF >> ~/.profile
+alias IG.wvdial="ln -sf ~/.ppprc.wvdial ~/.ppprc && $comw &"
+EOF
+echo -e '\nMuito bem... pequenas mudancas.. para voce se conectar na ig\n pelo wvdial, use o alias IG.wvdial, disponivel no proximo login!!\n Muito Obrigado.....'
+exit
+fi
