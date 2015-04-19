@@ -1,4 +1,4 @@
-IGauth - 1.0 - por ALASKA - 25/04/02 
+# IGauth - 1.0 - por ALASKA - 25/04/02 
 
 ########
 OBJETIVO
@@ -51,12 +51,7 @@ COMO INTERAGIR COM
 	MANUALMENTE => ao conectar digite $HOME/.IGauth/IGauth.sh
                        ao sair $HOME/.IGauth/IGauth.sh -out
 
-#######
-CONTATO
-#######
 
-Quem tiver interesse em ajudar, ow enviar pequenas contribuicoes ehe..
-Contato=>  alaska@fuckbillgates.org
-#newlinux / #itapirados / #bhs / #m4f14 / #slackware - irc.brasnet.org
+
 
 
