@@ -1,4 +1,4 @@
-# IGauth - 1.0 - por ALASKA - 25/04/02 
+# IGauth - 1.0 - 25/04/02 
 
 ########
 OBJETIVO
