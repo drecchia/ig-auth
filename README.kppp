@@ -1,0 +1,47 @@
+Instrucoes de como integrar IGauth.sh com o kppp, ja configurado e funcionando:
+
+PS: estas instrucoes sao compactiveis com as versoes novas do kppp
+em versoes mais antigas, estupe o IGauth.wvdial e implemente no seu 
+arquivo de configuracao de pppd padrao.... 
+
+0- Apos ter instalado o IGauth.sh pelo comando ./install.sh
+
+1- Abra o kppp
+
+2- Se nao existir uma conta da IG, crie!!!! ( naum me pergunte como )
+
+3- Clike no botao Configuracoes ow algo do tipo.. 
+
+4- Na Aba Contas, grupo Configuracao da Conta, selecione a conta da IG
+
+5- Ao lado direito tem alguns botoes, clique em Editar
+
+6- Certo, contando q esteja tudo certinho.. na para a aba Executar
+
+7- Agora temos 4 boxes: 
+   antes de conectar, ao conectar, antes de desconectar e ao desconectar
+
+8- Preencha a box "Ao conectar" com:
+   $HOME/.IGauth/IGauth.sh
+
+9- Preencha a box "Antes de desconectar" com:
+   $HOME/.IGauth/IGauth.sh -out
+
+10- Preencha a box "Ao desconectar" com:
+   $HOME/.IGauth/IGauth.sh -out
+
+11- Click em OK
+
+12- Novamente em OK
+
+13- Pronto, escolha a Conta Editada e disque normalmente....
+
+Quando conectar meu script vai mandar pelo seu browser a senha e password
+para o servidor da IG...
+
+PS: eh estremamente recomendado ter o lynx antes de instalar o IGauth
+    pq como o links eh uma coisa q naum tem mta opcao... nao da pra da um
+    -dump pra ele.... 
+    Qdo eu implanta tb a opcao de perl dae fika mto menos dependente.... 
+
+ALASKA - 25/04/02 - alaska@fuckbillgates.org
